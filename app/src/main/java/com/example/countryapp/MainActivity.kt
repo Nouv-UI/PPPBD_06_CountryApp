@@ -2,7 +2,11 @@ package com.example.countryapp
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
+import android.widget.Adapter
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -43,6 +47,25 @@ class MainActivity : AppCompatActivity() {
             adapterProvinces.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
 
             spinnerProvinces.adapter = adapterProvinces
+
+            spinnerCountry.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+                    override fun onItemSelected(
+                        parent: AdapterView<*>?,
+                        view: View,
+                        position: Int,
+                        id: Long
+                    ) {
+                        Toast.makeText(
+                            this@MainActivity,
+                            countries[position], Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>?) {
+                        TODO("Not yet implemented")
+                    }
+                }
         }
 
         enableEdgeToEdge()
