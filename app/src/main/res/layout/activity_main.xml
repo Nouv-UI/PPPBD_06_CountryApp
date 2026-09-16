@@ -46,6 +46,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"/>
 
+            <Button
+                android:id="@+id/btnShowCalendar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Show Calendar"
+                android:layout_marginTop="16dp"/>
+
         </LinearLayout>
 
     </ScrollView>
