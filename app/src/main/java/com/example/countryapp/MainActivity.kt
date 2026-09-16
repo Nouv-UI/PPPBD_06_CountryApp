@@ -15,8 +15,7 @@ import com.example.countryapp.databinding.ActivityMainBinding
 import java.util.zip.Inflater
 
 class MainActivity :
-    AppCompatActivity(),
-    DatePickerDialog.OnDateSetListener  {
+    AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var provinces: Array<String>
@@ -49,22 +48,6 @@ class MainActivity :
                 "datePicker"
             )
 
-            override fun onDateSet(
-                p0: android.widget.DatePicker?,
-                p1: Int,
-                p2: Int,
-                p3: Int
-            ) {
-
-                val selectedDate =
-                    "$p3/${p2 + 1}/$p1"
-
-                Toast.makeText(
-                    this@MainActivity,
-                    selectedDate,
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
         }
 
 

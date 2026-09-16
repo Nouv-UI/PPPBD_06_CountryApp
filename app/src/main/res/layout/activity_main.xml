@@ -52,7 +52,12 @@
                 android:layout_height="wrap_content"
                 android:text="Show Calendar"
                 android:layout_marginTop="16dp"/>
-
+<!--tombol showPicker-->
+            <Button
+                android:id="@+id/btnShowTimePicker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Show Time Picker" />
 
         </LinearLayout>
 
