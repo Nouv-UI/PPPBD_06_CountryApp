@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+//calendar
         binding.datePicker.init(
             binding.datePicker.year,
             binding.datePicker.month,
@@ -53,7 +53,20 @@ class MainActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT
             ).show()
         }
+//time picker
+        binding.timePicker.setOnTimeChangedListener { _, hourOfDay, minute ->
 
+            val selectedTime =
+                String.format("%02d:%02d", hourOfDay, minute)
+
+            Toast.makeText(
+                this@MainActivity,
+                selectedTime,
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
+//        spinner
         provinces = resources.getStringArray(R.array.provinces)
 
         with(binding) {

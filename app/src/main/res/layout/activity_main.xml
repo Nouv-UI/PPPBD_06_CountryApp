@@ -39,6 +39,13 @@
                 android:calendarViewShown="false"
                 android:datePickerMode="calendar" />
 
+            <TimePicker
+                android:id="@+id/timePicker"
+                android:timePickerMode="spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"/>
+
         </LinearLayout>
 
     </ScrollView>
