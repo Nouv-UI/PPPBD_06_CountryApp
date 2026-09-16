@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">CountryApp</string>
-    <array name="provinces">
+    <string-array name = "provinces">
         <item>Aceh</item>
         <item>Bali</item>
         <item>Banten</item>
@@ -11,5 +11,5 @@
         <item>Jawa Barat</item>
         <item>Jawa Tengah</item>
         <item>Jawa Timur</item>
-    </array>
+    </string-array>
 </resources>

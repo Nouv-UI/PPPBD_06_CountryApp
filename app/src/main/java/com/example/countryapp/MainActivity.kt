@@ -36,11 +36,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+//        SPINNER
+
         provinces = resources.getStringArray(R.array.provinces)
 
         with(binding) {
             val adapterCountry = ArrayAdapter(this@MainActivity, android.R.layout.simple_spinner_item, countries)
-            adapterCountry.setDropDownViewResource(android.R.layout.simple_spinner_item)
+            adapterCountry.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinnerCountry.adapter = adapterCountry
 
             val adapterProvinces = ArrayAdapter(this@MainActivity, android.R.layout.simple_spinner_item, provinces)
@@ -63,9 +65,19 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     override fun onNothingSelected(parent: AdapterView<*>?) {
-                        TODO("Not yet implemented")
                     }
                 }
+
+//            DATE PICKER
+
+            datePicker.init(
+                datePicker.year,
+                datePicker.month,
+                datePicker.dayOfMonth
+            ) { _, year, monthOfYEar, dayOfMonth ->
+                val selectedDate = "$dayOfMonth/${monthOfYEar + 1}/$year"
+                Toast.makeText(this@MainActivity, "selectedDate", Toast.LENGTH_SHORT).show()
+            }
         }
 
         enableEdgeToEdge()
