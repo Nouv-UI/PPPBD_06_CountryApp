@@ -65,6 +65,27 @@ class MainActivity : AppCompatActivity() {
             )
 
             spinnerProvinces.adapter = adapterProvinces
+
+            spinnerCountry.onItemSelectedListener =
+                object : AdapterView.OnItemSelectedListener {
+
+                    override fun onItemSelected(
+                        parent: AdapterView<*>,
+                        view: View,
+                        position: Int,
+                        id: Long
+                    ) {
+                        Toast.makeText(
+                            this@MainActivity,
+                            countries[position],
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+
+                    override fun onNothingSelected(parent: AdapterView<*>) {
+                        // Tidak ada item yang dipilih
+                    }
+                }
         }
     }
 }
