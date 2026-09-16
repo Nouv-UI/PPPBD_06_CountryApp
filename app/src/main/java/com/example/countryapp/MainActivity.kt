@@ -14,7 +14,9 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.countryapp.databinding.ActivityMainBinding
 import java.util.zip.Inflater
 
-class MainActivity : AppCompatActivity() {
+class MainActivity :
+    AppCompatActivity(),
+    DatePickerDialog.OnDateSetListener  {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var provinces: Array<String>
@@ -37,6 +39,35 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.btnShowCalendar.setOnClickListener {
+
+            val datePicker = DatePicker()
+
+            datePicker.show(
+                supportFragmentManager,
+                "datePicker"
+            )
+
+            override fun onDateSet(
+                p0: android.widget.DatePicker?,
+                p1: Int,
+                p2: Int,
+                p3: Int
+            ) {
+
+                val selectedDate =
+                    "$p3/${p2 + 1}/$p1"
+
+                Toast.makeText(
+                    this@MainActivity,
+                    selectedDate,
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+
+
 //calendar
         binding.datePicker.init(
             binding.datePicker.year,
