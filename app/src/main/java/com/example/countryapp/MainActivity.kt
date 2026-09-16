@@ -38,6 +38,22 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.datePicker.init(
+            binding.datePicker.year,
+            binding.datePicker.month,
+            binding.datePicker.dayOfMonth
+        ) { _, year, monthOfYear, dayOfMonth ->
+
+            val selectedDate =
+                "$dayOfMonth/${monthOfYear + 1}/$year"
+
+            Toast.makeText(
+                this@MainActivity,
+                selectedDate,
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+
         provinces = resources.getStringArray(R.array.provinces)
 
         with(binding) {
