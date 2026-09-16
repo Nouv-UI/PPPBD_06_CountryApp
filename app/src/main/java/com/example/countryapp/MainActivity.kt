@@ -17,10 +17,10 @@ import java.util.zip.Inflater
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-
     private lateinit var provinces: Array<String>
+
     private val countries = arrayOf(
-        "indonesia",
+        "Indonesia",
         "United States",
         "United Kingdom",
         "Germany",
@@ -31,61 +31,40 @@ class MainActivity : AppCompatActivity() {
         "Brazil",
         "Canada"
     )
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-//        SPINNER
 
         provinces = resources.getStringArray(R.array.provinces)
 
         with(binding) {
-            val adapterCountry = ArrayAdapter(this@MainActivity, android.R.layout.simple_spinner_item, countries)
-            adapterCountry.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+
+            val adapterCountry = ArrayAdapter(
+                this@MainActivity,
+                android.R.layout.simple_spinner_item,
+                countries
+            )
+
+            adapterCountry.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item
+            )
+
             spinnerCountry.adapter = adapterCountry
 
-            val adapterProvinces = ArrayAdapter(this@MainActivity, android.R.layout.simple_spinner_item, provinces)
-            adapterProvinces.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            val adapterProvinces = ArrayAdapter(
+                this@MainActivity,
+                android.R.layout.simple_spinner_item,
+                provinces
+            )
+
+            adapterProvinces.setDropDownViewResource(
+                android.R.layout.simple_spinner_dropdown_item
+            )
 
             spinnerProvinces.adapter = adapterProvinces
-
-            spinnerCountry.onItemSelectedListener =
-                object : AdapterView.OnItemSelectedListener {
-                    override fun onItemSelected(
-                        parent: AdapterView<*>?,
-                        view: View,
-                        position: Int,
-                        id: Long
-                    ) {
-                        Toast.makeText(
-                            this@MainActivity,
-                            countries[position], Toast.LENGTH_SHORT
-                        ).show()
-                    }
-
-                    override fun onNothingSelected(parent: AdapterView<*>?) {
-                    }
-                }
-
-//            DATE PICKER
-
-            datePicker.init(
-                datePicker.year,
-                datePicker.month,
-                datePicker.dayOfMonth
-            ) { _, year, monthOfYEar, dayOfMonth ->
-                val selectedDate = "$dayOfMonth/${monthOfYEar + 1}/$year"
-                Toast.makeText(this@MainActivity, "selectedDate", Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        enableEdgeToEdge()
-        setContentView(R.layout.activity_main)
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
-            val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
-            insets
         }
     }
 }
